@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Historia nivå 1b</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f2f4f3; --sheet:#ffffff; --ink:#1b2530; --muted:#56636e; --rule:#cdd6d3;
+  --e:#3f6f9c; --c:#257352; --a:#86407f; --accent:#a8741a;
+  --e-soft:#e3ecf5; --c-soft:#e0efe7; --a-soft:#f1e4ef; --alt:#e9e4d8;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --base:18px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#131a20; --sheet:#1b242c; --ink:#e6ecef; --muted:#9aa8b2; --rule:#33424d;
+    --e:#86b3dc; --c:#6cc79c; --a:#d69bd0; --accent:#e0ac52;
+    --e-soft:#1f3244; --c-soft:#1a3529; --a-soft:#3a2338; --alt:#2e2a22;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#131a20; --sheet:#1b242c; --ink:#e6ecef; --muted:#9aa8b2; --rule:#33424d;
+  --e:#86b3dc; --c:#6cc79c; --a:#d69bd0; --accent:#e0ac52;
+  --e-soft:#1f3244; --c-soft:#1a3529; --a-soft:#3a2338; --alt:#2e2a22;
+}
+:root.big{--base:23px}
+*{box-sizing:border-box}
+html{font-size:var(--base)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 1.25rem}
+
+/* Header */
+header{padding:2rem 0 0;border-bottom:1px solid var(--rule);background:var(--sheet)}
+.head-row{display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-end;justify-content:space-between}
+h1{font-family:var(--serif);font-weight:700;font-size:2.6rem;line-height:1.05;margin:0;letter-spacing:-.01em}
+.plan{display:inline-flex;align-items:center;gap:.5rem;margin-top:.5rem;color:var(--muted);font-size:.9rem}
+.plan b{color:var(--ink)}
+.plan a{color:var(--muted)}
+.tools{display:flex;gap:.5rem}
+.tool{background:transparent;border:1px solid var(--rule);border-radius:6px;padding:.35rem .7rem;cursor:pointer;font-size:.85rem}
+.tool[aria-pressed="true"]{background:var(--ink);color:var(--sheet);border-color:var(--ink)}
+nav[role=tablist]{display:flex;gap:.25rem;margin-top:1.5rem;overflow-x:auto}
+nav[role=tablist] button{background:none;border:none;border-bottom:4px solid transparent;padding:.6rem .9rem;cursor:pointer;font-weight:700;color:var(--muted);white-space:nowrap}
+nav[role=tablist] button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+
+main{padding:2rem 0 4rem}
+section[role=tabpanel][hidden]{display:none}
+h2{font-family:var(--serif);font-size:1.8rem;margin:0 0 .4rem;font-weight:700}
+h3{font-family:var(--serif);font-size:1.3rem;margin:0 0 .3rem;font-weight:700}
+.lead{color:var(--muted);max-width:62ch;margin:0 0 1.5rem}
+
+document.addEventListener("keydown", e => {
+  if ((e.key === "Enter" || e.key === " ") && e.target.matches(".vord[data-word]")) { e.preventDefault(); e.target.click(); }
+});
+
+/* Innehåll */
+.group{margin-bottom:2.25rem}
+.group > h3{border-bottom:2px solid var(--ink);padding-bottom:.3rem;margin-bottom:1rem}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
+.item{background:var(--sheet);border:1px solid var(--rule);border-left:6px solid var(--ink);padding:1rem 1.1rem;border-radius:2px}
+.item h4{font-family:var(--serif);font-size:1.2rem;margin:0 0 .4rem}
+.item p{margin:0 0 .6rem}
+.item .q{font-style:italic;color:var(--muted);margin:.2rem 0}
+.item .q::before{content:"? ";font-style:normal;font-weight:700;color:var(--accent)}
+details{margin-top:.6rem}
+summary{cursor:pointer;color:var(--muted);font-size:.9rem}
+details blockquote{margin:.5rem 0 0;padding:.6rem .8rem;background:var(--paper);border-left:3px solid var(--rule);font-size:.92rem}
+.links{margin-top:.6rem;font-size:.85rem;color:var(--muted)}
+.links button{background:none;border:none;padding:0;text-decoration:underline;cursor:pointer;color:var(--muted)}
+
+/* Tidslinje */
+.tl{background:var(--sheet);border:1px solid var(--rule);padding:1.25rem 1.25rem 2.5rem;overflow-x:auto}
+.tl-inner{position:relative;min-width:1000px}
+.lane-label{font-size:.8rem;color:var(--muted);margin:.8rem 0 .3rem}
+.lane{position:relative;height:3.2rem}
+.ep{position:absolute;top:0;height:100%;border:2px solid var(--ink);background:var(--paper);display:flex;align-items:center;justify-content:center;text-align:center;font-weight:700;font-size:.8rem;line-height:1.1;cursor:pointer;padding:0 .2rem;overflow:hidden;hyphens:manual}
+.ep.alt{border-style:dashed;background:var(--alt)}
+.ep[aria-pressed="true"]{background:var(--ink);color:var(--sheet)}
+.axis{position:relative;height:2rem;border-top:2px solid var(--ink);margin-top:.8rem}
+.tick{position:absolute;top:0;transform:translateX(-50%);font-size:.75rem;color:var(--muted);padding-top:.3rem;white-space:nowrap}
+.tick::before{content:"";position:absolute;top:-.45rem;left:50%;width:2px;height:.45rem;background:var(--ink)}
+.axis-note{font-size:.8rem;color:var(--muted);margin-top:.4rem}
+.ep-info{margin-top:1rem;min-height:5rem;background:var(--sheet);border:1px solid var(--rule);padding:1rem 1.1rem}
+.ep-info h3{margin-bottom:.2rem}
+.ep-info .span{color:var(--muted);font-size:.9rem}
+.probs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-top:1.5rem}
+.prob{border-top:4px solid var(--accent);background:var(--sheet);padding:.9rem 1rem}
+.prob h4{margin:0 0 .3rem;font-family:var(--serif);font-size:1.1rem}
+.prob p{margin:0 0 .5rem}
+.prob .ask{font-weight:700}
+
+/* Kriterier */
+.crit-controls{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:1rem}
+.crit{display:grid;grid-template-columns:minmax(150px,.8fr) repeat(3,minmax(200px,1fr));border:1px solid var(--rule);background:var(--sheet)}
+.crit > div{padding:.8rem .9rem;border-bottom:1px solid var(--rule)}
+.crit .colhead{font-family:var(--serif);font-size:1.6rem;font-weight:700;text-align:left;border-bottom:3px solid currentColor}
+.colhead.E{color:var(--e)} .colhead.C{color:var(--c)} .colhead.A{color:var(--a)}
+.crit .step{position:relative}
+.crit .rowhead{background:var(--paper);font-weight:700}
+.rowhead small{display:block;font-weight:400;color:var(--muted);margin-top:.3rem;font-size:.85rem;line-height:1.4}
+.cell{font-size:.95rem}
+.cell.E{border-left:1px solid var(--rule)} .cell.C,.cell.A{border-left:1px solid var(--rule)}
+.vord{border-radius:3px;padding:0 .15em;cursor:pointer;font-weight:700;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.lvl-E{background:var(--e-soft);color:var(--e);box-shadow:inset 0 -2px 0 var(--e)}
+.lvl-C{background:var(--c-soft);color:var(--c);box-shadow:inset 0 -2px 0 var(--c)}
+.lvl-A{background:var(--a-soft);color:var(--a);box-shadow:inset 0 -2px 0 var(--a)}
+.diff .plain{opacity:.28}
+.plain{transition:opacity .25s}
+@media (prefers-reduced-motion:reduce){.plain{transition:none}}
+.between{margin-top:.8rem;font-size:.9rem;color:var(--muted)}
+.def{margin-top:1rem;background:var(--sheet);border:1px solid var(--rule);border-left:6px solid var(--accent);padding:1rem 1.1rem;min-height:4.5rem}
+.def h3{margin-bottom:.2rem}
+.def .ex{color:var(--muted);font-style:italic}
+.gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.75rem;margin-top:2rem}
+.gloss div{background:var(--sheet);border:1px solid var(--rule);padding:.7rem .9rem}
+.gloss b{display:block}
+@media (max-width:760px){
+  .crit{grid-template-columns:1fr}
+  .crit .colhead{display:none}
+  .cell::before{content:attr(data-lvl);font-family:var(--serif);font-weight:700;font-size:1.2rem;margin-right:.4rem}
+  .cell.E::before{color:var(--e)} .cell.C::before{color:var(--c)} .cell.A::before{color:var(--a)}
+  h1{font-size:2rem}
+}
+
+/* Tre svar */
+.question{font-family:var(--serif);font-size:1.5rem;line-height:1.3;max-width:52ch;margin:0 0 1.25rem}
+.answers{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;align-items:start}
+.ans{background:var(--sheet);border:1px solid var(--rule);border-top:6px solid var(--rule);padding:1rem 1.1rem}
+.ans.revealed.E{border-top-color:var(--e)} .ans.revealed.C{border-top-color:var(--c)} .ans.revealed.A{border-top-color:var(--a)}
+.ans h3{display:flex;justify-content:space-between;align-items:baseline}
+.ans .grade{font-size:2rem}
+.ans.E .grade{color:var(--e)} .ans.C .grade{color:var(--c)} .ans.A .grade{color:var(--a)}
+.ans p.text{margin:.5rem 0 1rem}
+.guess{display:flex;gap:.4rem;align-items:center;flex-wrap:wrap;font-size:.9rem;color:var(--muted)}
+.guess button{border:2px solid var(--rule);background:var(--paper);border-radius:4px;width:2.4rem;height:2.4rem;cursor:pointer;font-weight:700}
+.guess button.right{border-color:var(--c);background:var(--c-soft)}
+.guess button.wrong{border-color:var(--a);text-decoration:line-through}
+.why{margin:.8rem 0 0;padding:0;list-style:none}
+.why li{padding:.45rem 0;border-top:1px solid var(--rule);font-size:.93rem}
+.ans-def{margin:.6rem 0 0;padding:.6rem .8rem;background:var(--paper);border-left:4px solid var(--accent);font-size:.9rem}
+.ans-controls{display:flex;gap:.5rem;flex-wrap:wrap;margin:0 0 1.25rem}
+.btn{border:2px solid var(--ink);background:var(--ink);color:var(--sheet);padding:.45rem .9rem;border-radius:4px;cursor:pointer;font-weight:700}
+.btn.ghost{background:transparent;color:var(--ink)}
+.qpick{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+
+footer{border-top:1px solid var(--rule);padding:1.25rem 0 2rem;color:var(--muted);font-size:.85rem}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <h1 id="title"></h1>
+        <div class="plan" id="plan"></div>
+      </div>
+      <div class="tools">
+        <button class="tool" id="bigBtn" aria-pressed="false">Projektorläge</button>
+        <button class="tool" id="themeBtn">Mörkt/ljust</button>
+      </div>
+    </div>
+    <nav role="tablist" aria-label="Delar">
+      <button role="tab" id="t-inn" aria-controls="p-inn" aria-selected="true">Innehållet</button>
+      <button role="tab" id="t-ep" aria-controls="p-ep" aria-selected="false" tabindex="-1">Epokerna</button>
+      <button role="tab" id="t-kr" aria-controls="p-kr" aria-selected="false" tabindex="-1">Betygskriterierna</button>
+      <button role="tab" id="t-sv" aria-controls="p-sv" aria-selected="false" tabindex="-1">Tre svar</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section role="tabpanel" id="p-inn" aria-labelledby="t-inn">
+    <h2>Vad vi ska lära oss</h2>
+    <p class="lead" id="innLead"></p>
+    <div id="innehall"></div>
+  </section>
+
+  <section role="tabpanel" id="p-ep" aria-labelledby="t-ep" hidden>
+    <h2>Epokerna – och vem som bestämt dem</h2>
+    <p class="lead">Klicka på en period. Heldragen ram är Europas vanliga indelning. Streckad ram visar hur samma tid delas in i Norden.</p>
+    <div class="tl"><div class="tl-inner" id="tl"></div></div>
+    <div class="ep-info" id="epInfo" aria-live="polite"><p class="span">Välj en period i tidslinjen.</p></div>
+    <h3 style="margin-top:2rem">Problematisera</h3>
+    <div class="probs" id="probs"></div>
+  </section>
+
+  <section role="tabpanel" id="p-kr" aria-labelledby="t-kr" hidden>
+    <h2>Från E till A</h2>
+    <p class="lead" id="krLead"></p>
+    <div class="crit-controls">
+      <button class="tool" id="diffBtn" aria-pressed="false">Visa bara det som skiljer</button>
+      <button class="tool" id="plainBtn" aria-pressed="false">Visa elevspråk</button>
+    </div>
+    <div class="crit" id="crit"></div>
+    <p class="between" id="between"></p>
+    <div class="def" id="def" aria-live="polite"><p class="ex">Klicka på ett färgat ord för att se vad det betyder.</p></div>
+    <h3 style="margin-top:2rem">Alla värdeord</h3>
+    <div class="gloss" id="gloss"></div>
+  </section>
+
+  <section role="tabpanel" id="p-sv" aria-labelledby="t-sv" hidden>
+    <h2>Samma fråga – tre svar</h2>
+    <p class="lead">Läs svaren. Vilket motsvarar E, C och A? Gissa, och se sedan vad som gör skillnaden.</p>
+    <div class="qpick" id="qpick"></div>
+    <p class="question" id="question"></p>
+    <div class="ans-controls">
+      <button class="btn" id="revealAll">Visa alla nivåer</button>
+      <button class="btn ghost" id="shuffle">Blanda om</button>
+    </div>
+    <div class="answers" id="answers"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" id="foot"></div>
+</footer>
+
+<script>
+const DATA = {"title": "Historia nivå 1b", "planName": "Gy25 (ämnesplan SKOLFS 2023:130)", "otherHref": "../gy11/", "otherLabel": "Byt till Gy11-versionen", "innLead": "Innehållet är uppdelat i två delar: vad vi läser om, och de verktyg vi använder när vi läser. Delarna hänger ihop – vi använder verktygen på innehållet hela tiden.", "krLead": "Samma fyra saker bedöms på alla betygsnivåer. Det som skiljer E, C och A är de färgade värdeorden. Klicka på ett ord för att se vad det betyder.", "between": "D: dina kunskaper ligger sammantaget mellan E och C. B: dina kunskaper ligger sammantaget mellan C och A. Betygskriterierna gäller för hela ämnet historia – om du läser fler nivåer senare byggs samma kriterier på.", "footer": "Källa: Skolverkets ämnesplan i historia. Elevspråk, exempel och exempelsvar är skrivna för undervisningen och är inte Skolverkets formuleringar – de är tänkta som stöd för samtal, inte som facit.", "innehall": [{"rubrik": "Historiskt innehåll – vad vi läser om", "punkter": [{"kort": "Epokerna", "krit": ["kunskap", "begrepp"], "elev": "Europas stora tidsperioder i ordning: forntiden, antiken, medeltiden, tidigmodern tid och modern tid. Vi diskuterar också varför man delar in historien så – och att indelningen beror på vem som gör den.", "fragor": ["Varför heter medeltiden just ”mellantiden”?", "Vem bestämde att det fanns en vikingatid?"], "text": "Europeisk epokindelning med forntiden, antiken, medeltiden, tidigmodern tid och modern tid utifrån ett kronologiskt perspektiv. Problematisering av historiska tidsindelningars beroende av kulturella och politiska förutsättningar."}, {"kort": "Industrialisering och demokrati", "krit": ["kunskap", "samband"], "elev": "Hur samhällen gick från jordbruk till industri, och hur demokratin växte fram – men också backade – i Sverige och andra länder från 1700-talet till idag. Vad det betydde för miljö, jämställdhet, mänskliga rättigheter och vem som fick vad.", "fragor": ["Vilka vann och vilka förlorade när fabrikerna kom?", "Varför blev vissa länder demokratier och andra diktaturer?"], "text": "Industrialisering samt framgångar och motgångar för demokratisering i Sverige och andra delar av världen från upplysningstiden till nutid. Konsekvenser av industrialisering och demokratisering, till exempel när det gäller resursfördelning, miljö, mänskliga rättigheter och jämställdhet. Jämförelser mellan Sverige och andra länder."}, {"kort": "Stora globala förändringar", "krit": ["kunskap", "begrepp"], "elev": "Förändringar som påverkat nästan hela mänskligheten under lång tid: jordbruket, tekniken, migration, kolonialism och frigörelse, folkmord, krig och samarbete. Vi följer ”långa linjer”: hur har levnadsvillkor och makt förändrats?", "fragor": ["Hur syns kolonialismen i dagens värld?", "Har vanliga människor fått mer makt över tid?"], "text": "Centrala globala förändringsprocesser och händelser, till exempel jordbrukets utveckling, teknisk utveckling, förändrat resursutnyttjande, migration, kolonialism och frigörelse, folkmord, konflikter och internationellt samarbete. Långa historiska linjer med fokus på levnadsvillkor och makt."}, {"kort": "Sveriges nationella minoriteter", "krit": ["kunskap", "samband"], "elev": "Judar, romer, samer, sverigefinnar och tornedalingar – deras historia i Sverige. Hur de har stängts ute eller tagits in i samhället, och var rasism mot samer, antisemitism och antiziganism kommer ifrån och hur de syns idag.", "fragor": ["Varför har samerna en särskild ställning som urfolk?", "Hur användes rasbiologin i Sverige?"], "text": "De nationella minoriteternas, däribland urfolket samernas, historiska rötter i Sverige. Exkludering och inkludering av de nationella minoriteterna i samhället under olika tidsperioder. Rasism mot samer samt antisemitism och antiziganism i och utanför Sverige, historiska rötter och nutida uttryck."}, {"kort": "Då, nu och sedan", "krit": ["samband"], "elev": "Hur det som hände förr påverkar hur världen ser ut idag – och vad det kan betyda för framtiden. Den här tråden går genom allt vi läser.", "fragor": ["Vad hände för 100 år sedan som påverkar ditt liv idag?"], "text": "Exempel på samband mellan skeenden i det förflutna och nutida förhållanden med relevans för framtiden."}]}, {"rubrik": "Historiska begrepp, källor och historiebruk – verktygen", "punkter": [{"kort": "Historikerns begrepp", "krit": ["begrepp"], "elev": "Tre begreppspar som hjälper oss att förklara och inte bara berätta: aktör och struktur, orsak och konsekvens, kontinuitet och förändring.", "fragor": ["Skapade Gustav Vasa den svenska staten – eller skapade omständigheterna Gustav Vasa?", "Vad förändrades egentligen – och vad stod still?"], "text": "Tillämpning av historiska begrepp på olika historiska frågeställningar i relation till det historiska innehållet. Hur begreppen aktör och struktur, orsak och konsekvens samt kontinuitet och förändring kan användas för att beskriva och förklara historiska förhållanden och förändringsprocesser."}, {"kort": "Källor", "krit": ["kallor"], "elev": "Vi läser, granskar och värderar källor – till exempel gamla dokument i arkiv och databaser – för att kunna svara på historiska frågor.", "fragor": ["Vad kan en källa som ljuger ändå berätta?", "Vem skrev det här, när och varför?"], "text": "Tolkning, granskning och värdering av historiska källor, till exempel arkivmaterial och databaser, som utgångspunkt för behandling av frågor kopplade till delar av det historiska innehållet."}, {"kort": "Historiebruk", "krit": ["bruk"], "elev": "Hur historia används i vardagen, i reklam, i politik och i familjer – och hur det påverkar vem vi tror att vi är och vad vi tycker.", "fragor": ["Varför används vikingar i reklam och politik?", "Vilka historier berättar din familj om förr?"], "text": "Historiebruk med koppling till delar av det historiska innehållet. Hur historia kan användas i till exempel vardagsliv, samhällsliv och politik och påverka människors identitet, värderingar och föreställningar."}]}], "lanes": [{"namn": "Europas epoker enligt ämnesplanen", "alt": false, "epoker": [{"namn": "Forntiden", "fran": -10000, "till": -800, "span": "Från de första människorna till ca 800 f.Kr. (i Medelhavsområdet)", "info": "Tiden före antiken. Den största delen av människans historia – men den tar minst plats i de flesta läroböcker. Vi vet om den främst genom arkeologi, eftersom det finns få eller inga skrivna källor."}, {"namn": "Antiken", "fran": -800, "till": 500, "span": "ca 800 f.Kr.–500 e.Kr.", "info": "De grekiska stadsstaterna och Romarriket. Slutar ungefär när det västromerska riket faller (476)."}, {"namn": "Medeltiden", "fran": 500, "till": 1500, "span": "ca 500–1500", "info": "Kyrkan och kungamakten växer, städer växer fram. Namnet betyder ”mellantiden” – mellan antiken och den tid som gav perioden dess namn."}, {"namn": "Tidigmodern tid", "fran": 1500, "till": 1800, "span": "ca 1500–1800", "info": "Ett paraplybegrepp som rymmer renässans, reformation, europeiska sjöresor och tidig kolonisation, furstestater och upplysning. Slutar med de stora revolutionerna."}, {"namn": "Modern tid", "fran": 1800, "till": 2026, "span": "ca 1800–idag", "info": "Samhällena efter den franska, den amerikanska och den industriella revolutionen: industri, nationalstater, demokrati – och världskrig."}]}, {"namn": "Samma tid i Norden", "alt": true, "epoker": [{"namn": "Forntiden i Norden", "fran": -10000, "till": 800, "span": "Från inlandsisens avsmältning till ca 800 e.Kr.", "info": "I Norden fanns nästan inga skrivna källor förrän runt år 1000. Därför räknas forntiden här ända fram till vikingatiden, långt efter att antiken tagit slut i Medelhavsområdet."}, {"namn": "Vikinga­tiden", "fran": 800, "till": 1050, "span": "ca 800–1050", "info": "Räknas ofta som den sista delen av den nordiska forntiden. Själva ordet ”vikingatid” började användas först i slutet av 1800-talet – samtidigt som många ville bygga en stolt nationell historia."}, {"namn": "Medeltiden i Sverige", "fran": 1050, "till": 1520, "span": "ca 1050–1520", "info": "Börjar ungefär när kristendomen får fäste och slutar ofta med Gustav Vasa. Alltså ungefär 500 år senare än i Europa – men den slutar ungefär samtidigt."}]}], "axis": {"anchors": [[-10000, 0], [-3000, 8], [-800, 17], [500, 28], [1050, 42], [1500, 56], [1800, 78], [2026, 100]], "ticks": [-3000, -800, 500, 1050, 1500, 1800, 2026], "note": "Obs! Tidsaxeln är inte skalenlig. Om den vore det skulle allt efter år 0 få plats i en liten flik längst till höger. Vad säger det om hur vi ser på historien?"}, "probs": [{"rubrik": "Vem döpte medeltiden?", "text": "Ordet kommer från 1400- och 1500-talets lärda i Italien. De såg sin egen tid som en återfödelse av antiken och tiden däremellan som en mörk ”mellantid”.", "fraga": "Är ”medeltid” ett neutralt ord – eller ett omdöme?"}, {"rubrik": "När uppfanns vikingatiden?", "text": "Begreppet vikingatid infördes i Sverige i slutet av 1800-talet. Det var en tid då nationalism var stark och många letade efter en ärorik svensk historia.", "fraga": "Varför kan en tidsindelning vara politisk?"}, {"rubrik": "Vems klocka?", "text": "I den muslimska tideräkningen är år 1 det år Muhammed flyttade till Medina (622 e.Kr.). Kinas historia delas traditionellt in efter kejsardynastier i stället för epoker.", "fraga": "Vad skulle hända med tidslinjen om vi utgick från en annan del av världen?"}, {"rubrik": "Vem syns inte?", "text": "Den europeiska indelningen säger nästan ingenting om vad som hände i Afrika, Amerika eller Asien under samma tid.", "fraga": "Vilka människor och platser försvinner när vi använder Europas epoker?"}], "kriterier": [{"id": "kunskap", "namn": "Kunskaper om det förflutna", "elev": "Vet du vad som hände, vilka som var inblandade och hur det har tolkats på olika sätt?", "E": "Eleven visar [[godtagbara]] kunskaper om förändringsprocesser, händelser och aktörer under olika tidsperioder utifrån olika tolkningar och perspektiv.", "C": "Eleven visar [[goda]] kunskaper om förändringsprocesser, händelser och aktörer under olika tidsperioder utifrån olika tolkningar och perspektiv.", "A": "Eleven visar [[mycket goda]] kunskaper om förändringsprocesser, händelser och aktörer under olika tidsperioder utifrån olika tolkningar och perspektiv."}, {"id": "samband", "namn": "Då och nu", "elev": "Kan du visa hur något som hände förr påverkar hur det är idag?", "E": "Eleven ger exempel på och förklarar [[översiktligt]] samband mellan skeenden i det förflutna och förhållanden i nutiden.", "C": "Eleven ger exempel på och förklarar [[utförligt]] samband mellan skeenden i det förflutna och förhållanden i nutiden.", "A": "Eleven ger exempel på och förklarar [[utförligt och nyanserat]] samband mellan skeenden i det förflutna och förhållanden i nutiden."}, {"id": "begrepp", "namn": "Begrepp och förklaringar", "elev": "Kan du använda historiska begrepp (t.ex. orsak–konsekvens, aktör–struktur) för att förklara, inte bara återberätta?", "E": "Eleven för [[enkla]] resonemang om det historiska innehållet utifrån historiska begrepp och [[förklaringsmodeller]].", "C": "Eleven för [[utvecklade]] resonemang om det historiska innehållet utifrån historiska begrepp och [[teorier]].", "A": "Eleven för [[utvecklade och nyanserade]] resonemang om det historiska innehållet utifrån historiska begrepp och [[teorier]]."}, {"id": "kallor", "namn": "Frågor och källor", "elev": "Kan du ställa bra frågor till det förflutna och använda källor för att besvara dem – och bedöma hur användbara källorna är?", "E": "Eleven formulerar frågor om det historiska innehållet och använder olika historiska källor för att undersöka historiska frågeställningar samt för [[enkla]] resonemang om källornas innehåll och användbarhet utifrån historisk metod.", "C": "Eleven formulerar [[välgrundade]] frågor om det historiska innehållet och använder olika historiska källor för att undersöka historiska frågeställningar samt för [[välgrundade]] resonemang om olika historiska källors innehåll och användbarhet utifrån historisk metod.", "A": "Eleven formulerar [[välgrundade och nyanserade]] frågor om det historiska innehållet och använder olika historiska källor för att undersöka historiska frågeställningar samt för [[välgrundade och nyanserade]] resonemang om källornas innehåll och användbarhet utifrån historisk metod."}, {"id": "bruk", "namn": "Historiebruk", "elev": "Kan du förklara hur och varför människor använder historia – i politik, reklam, filmer eller i vardagen?", "E": "Eleven för [[enkla]] resonemang om hur historia kan användas i olika sammanhang och för olika syften.", "C": "Eleven för [[utvecklade]] resonemang om hur historia kan användas i olika sammanhang och för olika syften.", "A": "Eleven för [[utvecklade och nyanserade]] resonemang om hur historia kan användas i olika sammanhang och för olika syften."}], "gloss": {"godtagbara": {"lvl": "E", "d": "Du kan det grundläggande och det du säger stämmer, men kunskaperna är inte så breda eller djupa."}, "goda": {"lvl": "C", "d": "Du kan mer: fler fakta, fler sammanhang, och du kan använda kunskaperna för att förklara."}, "mycket goda": {"lvl": "A", "d": "Breda och djupa kunskaper som du kan använda säkert – också för att jämföra och väga olika tolkningar."}, "översiktligt": {"lvl": "E", "d": "Du tar med det viktigaste men kort. Rätt, men få detaljer och få led i förklaringen.", "x": "”Idag är Sverige rikt, delvis på grund av industrin.”"}, "utförligt": {"lvl": "C", "d": "Du förklarar mer: flera orsaker eller detaljer, och du visar hur saker hänger ihop.", "x": "”…vilket ledde till att… och därför…”"}, "utförligt och nyanserat": {"lvl": "A", "d": "Utförligt + du visar att saken är komplicerad: du väger förklaringar mot varandra, ser undantag och olika perspektiv.", "x": "”Å ena sidan… å andra sidan… det beror på…”"}, "enkla": {"lvl": "E", "d": "Resonemanget har ett steg: ett påstående och ett skäl.", "x": "”Folk flyttade till städerna för att få jobb.”"}, "utvecklade": {"lvl": "C", "d": "Resonemanget har flera steg: påstående → skäl → följd. Du bygger vidare på dina egna tankar.", "x": "”Befolkningen ökade → fler behövde arbete → de blev arbetare i industrin.”"}, "utvecklade och nyanserade": {"lvl": "A", "d": "Flera steg + du väger olika sidor mot varandra och drar en egen, motiverad slutsats."}, "välgrundade": {"lvl": "C", "d": "Det du säger har stöd i fakta, källor eller goda argument – inte bara en åsikt eller gissning."}, "välgrundade och nyanserade": {"lvl": "A", "d": "Väl underbyggt + du ser flera sidor, till exempel både styrkor och svagheter hos en källa."}, "förklaringsmodeller": {"lvl": "E", "d": "Ett konkret verktyg för att förklara ett visst historiskt skeende, till exempel att se det som en fråga om aktörer eller om strukturer."}, "teorier": {"lvl": "C", "d": "Ett större system av idéer för att förstå och tolka historien. Mer övergripande än en förklaringsmodell."}}, "svar": [{"kort": "Industrialiseringen", "fraga": "Varför industrialiserades Sverige under 1800-talet, och vilka blev konsekvenserna? Använd historiska begrepp i ditt svar.", "svar": [{"niva": "E", "text": "Sverige blev ett industriland på 1800-talet. En orsak var att man byggde järnvägar, så att det blev lättare att frakta saker. Sverige hade också mycket skog och järnmalm som andra länder ville köpa. Många människor flyttade från landsbygden till städerna för att jobba på fabrikerna. En konsekvens var att det växte fram fackföreningar. Idag är Sverige ett rikt land, och det beror delvis på industrin.", "varfor": ["Rätt fakta, men kort: några orsaker och en konsekvens → [[godtagbara]] kunskaper.", "Orsak och konsekvens nämns, men varje tanke stannar efter ett steg → [[enkla]] resonemang.", "Kopplingen till idag finns men är en enda mening → [[översiktligt]]."]}, {"niva": "C", "text": "Sverige industrialiserades sent jämfört med Storbritannien, framför allt från 1870-talet. En viktig orsak var att befolkningen ökade kraftigt samtidigt som skiftena gjorde jordbruket effektivare. Det betydde att många på landsbygden inte behövdes i jordbruket och kunde bli arbetare. En annan orsak var att Storbritannien och andra länder ville köpa svenskt trä och järn, och när stambanorna byggdes från 1850-talet blev det billigare att frakta varorna. Staten bidrog också, till exempel med näringsfriheten 1864 som gjorde det lättare att starta företag. På kort sikt flyttade många till städer och sågverksorter där villkoren ofta var hårda. På lång sikt växte arbetarrörelsen och krävde rösträtt, vilket är en del av förklaringen till att Sverige blev en demokrati. Industrin lade också grunden till den välfärd vi har idag.", "varfor": ["Flera orsaker förklaras och kopplas ihop (”det betydde att…”) → [[utvecklade]] resonemang.", "Skiljer på kortsiktiga och långsiktiga konsekvenser – begreppen används på riktigt.", "Förklarar hur industrin hänger ihop med demokrati och välfärd idag → [[utförligt]]."]}, {"niva": "A", "text": "Industrialiseringen kan förklaras på olika sätt. Utgår man från strukturer var det den internationella efterfrågan på trä och järn och den snabba befolkningsökningen som gjorde den möjlig. Utgår man från aktörer kan man lyfta fram företagare och uppfinnare som Lars Magnus Ericsson, eller staten som byggde stambanorna. Jag tycker att strukturerna väger tyngst, eftersom sågverk växte fram längs hela Norrlandskusten oavsett vem som ägde dem. Men utan statens järnvägar hade det troligen gått långsammare, så förklaringarna behöver kombineras. Industrialiseringen var inte heller ett framsteg för alla. Över en miljon svenskar emigrerade till Amerika, vilket både var en följd av fattigdom och något som minskade trycket på arbetsmarknaden hemma. Sundsvallsstrejken 1879 visar att arbetare tidigt protesterade mot sänkta löner. Idag beskrivs de stora satsningarna på grön industri i Norrbotten ibland som en ny industrialisering. Likheten är att naturresurser och statliga beslut återigen styr var industrin hamnar. Skillnaden är att miljön nu är en orsak till förändringen och inte bara en konsekvens. Det talar för att framtidens industri kommer att bedömas efter fler mått än tillväxt – men det är ännu för tidigt att veta om satsningarna håller.", "varfor": ["Jämför aktörs- och strukturförklaringar, tar ställning och motiverar → [[utvecklade och nyanserade]] resonemang.", "Visar att förändringen såg olika ut för olika grupper (emigranter, arbetare) → olika perspektiv.", "Jämför då och nu, ser både likheter och skillnader och är försiktig med slutsatsen → [[utförligt och nyanserat]]."]}]}]};
+
+const $ = s => document.querySelector(s);
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* Header */
+$("#title").textContent = DATA.title;
+document.title = DATA.title;
+$("#plan").innerHTML = `Enligt <b>${esc(DATA.planName)}</b> · <a href="${DATA.otherHref}">${esc(DATA.otherLabel)}</a>`;
+$("#innLead").textContent = DATA.innLead;
+$("#krLead").textContent = DATA.krLead;
+$("#between").textContent = DATA.between;
+$("#foot").innerHTML = DATA.footer;
+
+/* Tools */
+const root = document.documentElement;
+$("#bigBtn").onclick = e => { const on = root.classList.toggle("big"); e.target.setAttribute("aria-pressed", on); };
+$("#themeBtn").onclick = () => {
+  const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+};
+
+/* Tabs */
+const tabs = [...document.querySelectorAll('[role=tab]')];
+function selectTab(t){
+  tabs.forEach(x => {
+    const on = x === t;
+    x.setAttribute("aria-selected", on); x.tabIndex = on ? 0 : -1;
+    document.getElementById(x.getAttribute("aria-controls")).hidden = !on;
+  });
+  try { history.replaceState(null, "", "#" + t.id.slice(2)); } catch (e) { /* t.ex. i förhandsvisning utan egen adress */ }
+}
+tabs.forEach((t, i) => {
+  t.onclick = () => selectTab(t);
+  t.onkeydown = e => {
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+      const n = tabs[(i + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length];
+      selectTab(n); n.focus();
+    }
+  };
+});
+const start = tabs.find(t => "#" + t.id.slice(2) === location.hash);
+if (start) selectTab(start);
+
+/* Värdeord: [[ord]] -> knapp */
+function marks(text, lvl, plainWrap){
+  const parts = text.split(/(\[\[[^\]]+\]\])/);
+  return parts.map(p => {
+    const m = p.match(/^\[\[(.+)\]\]$/);
+    if (m) return `<span role="button" tabindex="0" class="vord lvl-${lvl}" data-word="${esc(m[1])}" data-lvl="${lvl}">${esc(m[1])}</span>`;
+    return plainWrap ? `<span class="plain">${esc(p)}</span>` : esc(p);
+  }).join("");
+}
+function showDef(word, lvl){
+  const g = DATA.gloss[word.toLowerCase()];
+  const box = $("#def");
+  if (!g) { box.innerHTML = `<h3>${esc(word)}</h3>`; return; }
+  box.innerHTML = `<h3><span class="vord lvl-${lvl}" style="cursor:default">${esc(word)}</span></h3><p>${esc(g.d)}</p>${g.x ? `<p class="ex">${esc(g.x)}</p>` : ""}`;
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest(".vord[data-word]");
+  if (!b) return;
+  const card = b.closest(".ans");
+  if (card) {
+    const g = DATA.gloss[b.dataset.word.toLowerCase()];
+    let box = card.querySelector(".ans-def");
+    if (!box) { box = document.createElement("p"); box.className = "ans-def"; card.appendChild(box); }
+    box.innerHTML = g ? `<b>${esc(b.dataset.word)}:</b> ${esc(g.d)}` : "";
+    return;
+  }
+  showDef(b.dataset.word, b.dataset.lvl);
+  $("#def").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest"});
+});
+
+/* Innehåll */
+$("#innehall").innerHTML = DATA.innehall.map(g => `
+  <div class="group">
+    <h3>${esc(g.rubrik)}</h3>
+    <div class="items">
+      ${g.punkter.map(p => `
+        <article class="item">
+          <h4>${esc(p.kort)}</h4>
+          <p>${esc(p.elev)}</p>
+          ${p.fragor.map(q => `<p class="q">${esc(q)}</p>`).join("")}
+          <details><summary>Skolverkets text</summary><blockquote>${esc(p.text)}</blockquote></details>
+          ${p.krit && p.krit.length ? `<div class="links">Bedöms främst i: ${p.krit.map(k => `<button data-krit="${k}">${esc(DATA.kriterier.find(r => r.id === k).namn)}</button>`).join(", ")}</div>` : ""}
+        </article>`).join("")}
+    </div>
+  </div>`).join("");
+document.querySelectorAll("[data-krit]").forEach(b => b.onclick = () => {
+  selectTab($("#t-kr"));
+  const row = document.getElementById("row-" + b.dataset.krit);
+  row.scrollIntoView({block: "center"});
+  row.animate ? row.animate([{background: "var(--alt)"}, {background: "var(--paper)"}], {duration: 1400}) : 0;
+});
+
+/* Tidslinje */
+const A = DATA.axis.anchors;
+function pos(y){
+  if (y <= A[0][0]) return 0;
+  for (let i = 1; i < A.length; i++) {
+    if (y <= A[i][0]) {
+      const [y0, p0] = A[i-1], [y1, p1] = A[i];
+      return p0 + (y - y0) / (y1 - y0) * (p1 - p0);
+    }
+  }
+  return 100;
+}
+const fmtY = y => y < 0 ? `${-y} f.Kr.` : `${y}`;
+let tlHTML = "";
+DATA.lanes.forEach((lane, li) => {
+  tlHTML += `<div class="lane-label">${esc(lane.namn)}</div><div class="lane">`;
+  lane.epoker.forEach((ep, ei) => {
+    const l = pos(ep.fran), w = pos(ep.till) - l;
+    tlHTML += `<button class="ep ${lane.alt ? "alt" : ""}" style="left:${l}%;width:${w}%" data-l="${li}" data-e="${ei}" aria-pressed="false" title="${esc(ep.namn.replace(/\u00ad/g,""))}">${esc(ep.namn)}</button>`;
+  });
+  tlHTML += `</div>`;
+});
+tlHTML += `<div class="axis">${DATA.axis.ticks.map(t => `<span class="tick" style="left:${pos(t)}%">${fmtY(t)}</span>`).join("")}</div>`;
+tlHTML += `<p class="axis-note">${esc(DATA.axis.note)}</p>`;
+$("#tl").innerHTML = tlHTML;
+document.querySelectorAll(".ep").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".ep").forEach(x => x.setAttribute("aria-pressed", "false"));
+  b.setAttribute("aria-pressed", "true");
+  const ep = DATA.lanes[b.dataset.l].epoker[b.dataset.e];
+  $("#epInfo").innerHTML = `<h3>${esc(ep.namn.replace(/\u00ad/g,""))}</h3><p class="span">${esc(ep.span)}</p><p>${esc(ep.info)}</p>`;
+});
+$("#probs").innerHTML = DATA.probs.map(p => `<div class="prob"><h4>${esc(p.rubrik)}</h4><p>${esc(p.text)}</p><p class="ask">${esc(p.fraga)}</p></div>`).join("");
+
+/* Kriterier */
+function renderCrit(){
+  const plain = $("#plainBtn").getAttribute("aria-pressed") === "true";
+  let h = `<div class="rowhead" style="background:var(--sheet)"></div>` + ["E","C","A"].map(l => `<div class="colhead ${l}">${l}</div>`).join("");
+  DATA.kriterier.forEach(r => {
+    h += `<div class="rowhead" id="row-${r.id}">${esc(r.namn)}${plain ? `<small>${esc(r.elev)}</small>` : ""}</div>`;
+    ["E","C","A"].forEach(l => { h += `<div class="cell ${l}" data-lvl="${l}">${marks(r[l], l, true)}</div>`; });
+  });
+  $("#crit").innerHTML = h;
+}
+renderCrit();
+$("#diffBtn").onclick = e => { const on = $("#crit").classList.toggle("diff"); e.target.setAttribute("aria-pressed", on); };
+$("#plainBtn").onclick = e => { const on = e.target.getAttribute("aria-pressed") !== "true"; e.target.setAttribute("aria-pressed", on); renderCrit(); if ($("#diffBtn").getAttribute("aria-pressed") === "true") $("#crit").classList.add("diff"); };
+$("#gloss").innerHTML = Object.entries(DATA.gloss).map(([k, g]) => `<div><b><span class="vord lvl-${g.lvl}" style="cursor:default">${esc(k)}</span></b>${esc(g.d)}</div>`).join("");
+
+/* Tre svar */
+let qi = 0, order = [0,1,2];
+function shuffleOrder(){ order = [0,1,2].sort(() => Math.random() - .5); }
+function renderQ(){
+  const q = DATA.svar[qi];
+  $("#qpick").innerHTML = DATA.svar.length > 1 ? DATA.svar.map((s, i) => `<button class="tool" aria-pressed="${i === qi}" data-q="${i}">${esc(s.kort)}</button>`).join("") : "";
+  document.querySelectorAll("[data-q]").forEach(b => b.onclick = () => { qi = +b.dataset.q; shuffleOrder(); renderQ(); });
+  $("#question").textContent = q.fraga;
+  $("#answers").innerHTML = order.map((ai, n) => {
+    const a = q.svar[ai];
+    return `<article class="ans ${a.niva}" data-a="${ai}">
+      <h3><span>Svar ${n + 1}</span><span class="grade" hidden>${a.niva}</span></h3>
+      <p class="text">${esc(a.text)}</p>
+      <div class="guess">Gissa: ${["E","C","A"].map(l => `<button data-g="${l}" aria-label="Gissa ${l}">${l}</button>`).join("")}</div>
+      <ul class="why" hidden>${a.varfor.map(w => `<li>${marks(w, a.niva, false)}</li>`).join("")}</ul>
+    </article>`;
+  }).join("");
+  document.querySelectorAll(".ans").forEach(card => {
+    card.querySelectorAll("[data-g]").forEach(b => b.onclick = () => {
+      const right = card.classList.contains(b.dataset.g);
+      b.classList.add(right ? "right" : "wrong");
+      if (right) reveal(card);
+    });
+  });
+}
+function reveal(card){
+  card.classList.add("revealed");
+  card.querySelector(".grade").hidden = false;
+  card.querySelector(".why").hidden = false;
+}
+$("#revealAll").onclick = () => document.querySelectorAll(".ans").forEach(reveal);
+$("#shuffle").onclick = () => { shuffleOrder(); renderQ(); };
+shuffleOrder(); renderQ();
+</script>
+</body>
+</html>
